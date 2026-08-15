@@ -26,17 +26,13 @@
 
 ## 数据说明
 
-原始行情、财务、行业分类和研报文件未包含在仓库中。这些数据可能来自 CSMAR、Wind、iFinD、RESSET 等授权数据库，或来自有版权限制的研究报告。
+原始行情、财务、行业分类和研报文件未包含在仓库中。这些数据可能来自 CSMAR、Wind 等授权数据库，或来自有版权限制的研究报告。
 
 Notebook 中保留了研究逻辑和部分结果展示。如需重新运行，请根据自己的本地数据路径进行调整。详细说明见 `DATA.md`。
 
 ## 环境依赖
 
-项目使用 Python 及常见量化研究库，包括 pandas、numpy、statsmodels、scipy、plotnine、matplotlib、arch、pmdarima 等。可使用以下命令安装建议依赖：
-
-```bash
-pip install -r requirements.txt
-```
+项目使用 Python 及常见量化研究库，包括 pandas、numpy、statsmodels、scipy、plotnine、matplotlib、arch、pmdarima 等。
 
 ## 作品集定位
 
