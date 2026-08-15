@@ -1,0 +1,266 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Steve Loughran Value Screening</title>
+<style>body{font-family:Arial, sans-serif;max-width:980px;margin:32px auto;line-height:1.5;color:#222} img{max-width:100%;border:1px solid #ddd;margin:12px 0 28px} table{border-collapse:collapse;width:100%;margin:12px 0 24px} td,th{border:1px solid #ddd;padding:6px 8px;text-align:left} h1,h2{color:#1f3a7a}</style></head><body>
+<h1>A-Share Value Screening Strategy Replication</h1>
+<p>Replication and extension of the Steve Loughran value screening strategy in the A-share market.</p>
+<h2>Key Figures</h2>
+<h3>01_net_value_curve.png</h3><img src='figures/01_net_value_curve.png' alt='01_net_value_curve.png'>
+<h3>02_cumulative_excess_return.png</h3><img src='figures/02_cumulative_excess_return.png' alt='02_cumulative_excess_return.png'>
+<h3>03_holding_count_over_time.png</h3><img src='figures/03_holding_count_over_time.png' alt='03_holding_count_over_time.png'>
+<h3>04_latest_industry_distribution.png</h3><img src='figures/04_latest_industry_distribution.png' alt='04_latest_industry_distribution.png'>
+<h3>05_latest_market_cap_distribution_pie.png</h3><img src='figures/05_latest_market_cap_distribution_pie.png' alt='05_latest_market_cap_distribution_pie.png'>
+<h2>Summary Tables</h2>
+<h3>daily_return_summary</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>交易日数</td>
+      <td>2851.000000</td>
+    </tr>
+    <tr>
+      <td>组合累计收益</td>
+      <td>11.580733</td>
+    </tr>
+    <tr>
+      <td>组合年化收益</td>
+      <td>0.241988</td>
+    </tr>
+    <tr>
+      <td>上证指数累计收益</td>
+      <td>2.240465</td>
+    </tr>
+    <tr>
+      <td>上证指数年化收益</td>
+      <td>0.105859</td>
+    </tr>
+    <tr>
+      <td>年化超额收益</td>
+      <td>0.127989</td>
+    </tr>
+  </tbody>
+</table>
+<h3>daily_risk_summary</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>年化波动率</td>
+      <td>0.317771</td>
+    </tr>
+    <tr>
+      <td>Sharpe比率（无风险利率按0）</td>
+      <td>0.842434</td>
+    </tr>
+    <tr>
+      <td>Beta（相对上证指数）</td>
+      <td>1.060907</td>
+    </tr>
+    <tr>
+      <td>最大回撤</td>
+      <td>-0.656221</td>
+    </tr>
+    <tr>
+      <td>最大回撤开始日</td>
+      <td>2008-03-05 00:00:00</td>
+    </tr>
+    <tr>
+      <td>最大回撤结束日</td>
+      <td>2008-11-04 00:00:00</td>
+    </tr>
+    <tr>
+      <td>最大回撤自然日数</td>
+      <td>244</td>
+    </tr>
+  </tbody>
+</table>
+<h3>daily_profit_loss_summary</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>盈利天数</td>
+      <td>1610.000000</td>
+    </tr>
+    <tr>
+      <td>亏损天数</td>
+      <td>1241.000000</td>
+    </tr>
+    <tr>
+      <td>胜率</td>
+      <td>0.564714</td>
+    </tr>
+    <tr>
+      <td>盈利日平均收益</td>
+      <td>0.014077</td>
+    </tr>
+    <tr>
+      <td>亏损日平均收益</td>
+      <td>-0.015742</td>
+    </tr>
+    <tr>
+      <td>盈亏比</td>
+      <td>0.894224</td>
+    </tr>
+  </tbody>
+</table>
+<h3>daily_holding_count_summary</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>metric</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>调仓期数</td>
+      <td>121.000000</td>
+    </tr>
+    <tr>
+      <td>平均每期持股数</td>
+      <td>24.446281</td>
+    </tr>
+    <tr>
+      <td>最少持股数</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <td>最多持股数</td>
+      <td>53.000000</td>
+    </tr>
+    <tr>
+      <td>平均单边换手率</td>
+      <td>0.467113</td>
+    </tr>
+    <tr>
+      <td>平均交易成本</td>
+      <td>0.000607</td>
+    </tr>
+  </tbody>
+</table>
+<h3>industry_distribution</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>industry_label</th>
+      <th>stock_count</th>
+      <th>market_value</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Commerce &amp; Retail</td>
+      <td>1</td>
+      <td>5.708825e+10</td>
+      <td>0.028201</td>
+    </tr>
+    <tr>
+      <td>Building Materials</td>
+      <td>1</td>
+      <td>6.537600e+10</td>
+      <td>0.032295</td>
+    </tr>
+    <tr>
+      <td>Steel</td>
+      <td>1</td>
+      <td>6.933733e+10</td>
+      <td>0.034251</td>
+    </tr>
+    <tr>
+      <td>Light Manufacturing</td>
+      <td>1</td>
+      <td>7.799638e+10</td>
+      <td>0.038529</td>
+    </tr>
+    <tr>
+      <td>Automobiles</td>
+      <td>1</td>
+      <td>1.172490e+11</td>
+      <td>0.057919</td>
+    </tr>
+    <tr>
+      <td>Electrical Equipment</td>
+      <td>1</td>
+      <td>1.238225e+11</td>
+      <td>0.061166</td>
+    </tr>
+    <tr>
+      <td>Real Estate</td>
+      <td>3</td>
+      <td>2.441306e+11</td>
+      <td>0.120596</td>
+    </tr>
+    <tr>
+      <td>Textile &amp; Apparel</td>
+      <td>2</td>
+      <td>2.509025e+11</td>
+      <td>0.123942</td>
+    </tr>
+    <tr>
+      <td>Food &amp; Beverage</td>
+      <td>1</td>
+      <td>1.018458e+12</td>
+      <td>0.503101</td>
+    </tr>
+  </tbody>
+</table>
+<h3>market_cap_distribution</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>market_cap_group</th>
+      <th>stock_count</th>
+      <th>market_value</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mega Cap</td>
+      <td>1</td>
+      <td>1.018458e+12</td>
+      <td>0.503101</td>
+    </tr>
+    <tr>
+      <td>Large Cap</td>
+      <td>1</td>
+      <td>1.828931e+11</td>
+      <td>0.090346</td>
+    </tr>
+    <tr>
+      <td>Mid Cap</td>
+      <td>3</td>
+      <td>3.447349e+11</td>
+      <td>0.170293</td>
+    </tr>
+    <tr>
+      <td>Small-Mid Cap</td>
+      <td>6</td>
+      <td>4.211862e+11</td>
+      <td>0.208059</td>
+    </tr>
+    <tr>
+      <td>Small Cap</td>
+      <td>1</td>
+      <td>5.708825e+10</td>
+      <td>0.028201</td>
+    </tr>
+  </tbody>
+</table>
+</body></html>
